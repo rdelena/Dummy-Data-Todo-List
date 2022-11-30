@@ -14,17 +14,17 @@ let arrayOfTodos = [
     completed: false,
   },
 ];
-
+// Fetches Data From JSON API
 const fetchTodos = () => {
   fetch("https://jsonplaceholder.typicode.com/todos")
     .then((response) => response.json())
     .then((json) => (arrayOfTodos = json));
 };
-
+// Logs Fetched Data to console
 const logTodos = () => {
   console.log(arrayOfTodos);
 };
-
+// Populates To-Do List with Titles from JSON
 const populateTodos = () => {
   for (let i = 0; i < arrayOfTodos.length; i++) {
     const toDo = document.getElementById("todo-list");
@@ -34,3 +34,13 @@ const populateTodos = () => {
     toDo.appendChild(li);
   }
 };
+
+// const populateUserIDTodos = () => {
+//   const userIDNum = document.getElementById("userIDNum").value;
+//   const filteredUserID = arrayOfTodos.filter(
+//     (toDo) => toDo.userId === userIDNum
+//   );
+// };
+
+const resetTodos = () => {};
+const filterCompleteTodos = () => {};
