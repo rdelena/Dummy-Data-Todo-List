@@ -31,16 +31,25 @@ const populateTodos = () => {
     const li = document.createElement("li");
     const text = document.createTextNode(arrayOfTodos[i].title);
     li.appendChild(text);
-    toDo.appendChild(li);
+    toDo.append(li);
   }
 };
+const form = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+console.log(form);
 
-// const populateUserIDTodos = () => {
-//   const userIDNum = document.getElementById("userIDNum").value;
-//   const filteredUserID = arrayOfTodos.filter(
-//     (toDo) => toDo.userId === userIDNum
-//   );
-// };
+const populateUserIDTodos = () => {
+  const submit = document.getElementById("submit").value;
+  console.log(submit);
+
+  // const filteredUserID = arrayOfTodos.filter(
+  //   (arrayOfTodos) => arrayOfTodos.userId === userIDNum
+  // );
+  // console.log(filteredUserID);
+};
 
 const resetTodos = () => {};
+
 const filterCompleteTodos = () => {};
