@@ -39,16 +39,35 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-const populateUserIDTodos = () => {
-  const submit = document.getElementById("submit").value;
-  console.log(submit);
+const filteredArray = [];
 
-  // const filteredUserID = arrayOfTodos.filter(
-  //   (arrayOfTodos) => arrayOfTodos.userId === userIDNum
-  // );
-  // console.log(filteredUserID);
+const populateUserIDTodos = () => {
+  resetTodos();
+  const userID = document.getElementById("userIDNum").value;
+  const filteredUserID = arrayOfTodos.filter(
+    (toDoID) => toDoID.userId == userID
+  );
+  console.log(userID);
+  console.log(filteredUserID);
+  for (let i = 0; i < filteredUserID.length; i++) {
+    const toDo = document.getElementById("todo-list");
+    const li = document.createElement("li");
+    const text = document.createTextNode(filteredUserID[i].title);
+    li.appendChild(text);
+    toDo.append(li);
+    filteredArray.push(filteredUserID);
+  }
 };
 
-const resetTodos = () => {};
+const resetTodos = () => {
+  const reset = document.getElementById("todo-list");
+  reset.textContent = "";
+};
 
-const filterCompleteTodos = () => {};
+const filterCompleteTodos = () => {
+  resetTodos();
+  const filteredComplete = filteredArray.filter(
+    (toDoID) => toDoID.userId == userID && !toDoID.completed
+  );
+  console.log(filteredComplete);
+};
