@@ -26,6 +26,7 @@ const logTodos = () => {
 };
 // Populates To-Do List with Titles from JSON
 const populateTodos = () => {
+  resetTodos();
   for (let i = 0; i < arrayOfTodos.length; i++) {
     const toDo = document.getElementById("todo-list");
     const li = document.createElement("li");
@@ -34,13 +35,9 @@ const populateTodos = () => {
     toDo.append(li);
   }
 };
-const form = document.querySelector("form");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
 
 const filteredArray = [];
-
+// Populates To-Do List with Specific UserID Titles from JSON
 const populateUserIDTodos = () => {
   resetTodos();
   const userID = document.getElementById("userIDNum").value;
@@ -58,16 +55,40 @@ const populateUserIDTodos = () => {
     filteredArray.push(filteredUserID);
   }
 };
-
+// Resets all List Text from every Ordered List
 const resetTodos = () => {
   const reset = document.getElementById("todo-list");
   reset.textContent = "";
+  const resetTrue = document.getElementById("ToDoTrue");
+  resetTrue.textContent = "";
+  const resetFalse = document.getElementById("ToDoFalse");
+  resetFalse.textContent = "";
 };
-
-const filterCompleteTodos = () => {
+// Filters ToDo List based on Completed & Uncompleted value
+const filterTodos = () => {
   resetTodos();
-  const filteredComplete = filteredArray.filter(
+  const userID = document.getElementById("userIDNum").value;
+  const filteredUserIDTrue = arrayOfTodos.filter(
+    (toDoID) => toDoID.userId == userID && toDoID.completed
+  );
+  for (let i = 0; i < filteredUserIDTrue.length; i++) {
+    const toDoTrue = document.getElementById("ToDoTrue");
+    const li = document.createElement("li");
+    const text = document.createTextNode(filteredUserIDTrue[i].title);
+    li.appendChild(text);
+    toDoTrue.append(li);
+  }
+  const filteredUserIDFalse = arrayOfTodos.filter(
     (toDoID) => toDoID.userId == userID && !toDoID.completed
   );
-  console.log(filteredComplete);
+  for (let i = 0; i < filteredUserIDFalse.length; i++) {
+    const toDoFalse = document.getElementById("ToDoFalse");
+    const li = document.createElement("li");
+    const text = document.createTextNode(filteredUserIDFalse[i].title);
+    li.appendChild(text);
+    toDoFalse.append(li);
+  }
+  console.log(userID);
+  console.log(filteredUserIDTrue);
+  console.log(filteredUserIDFalse);
 };

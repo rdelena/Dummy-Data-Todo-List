@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>JSON API Dummy To-Do List</h1>
-    <div>
+    <div class="labels">
       <button onclick="fetchTodos()">Fetch Todos</button>
       <button onclick="logTodos()">Log Todos</button>
       <button onclick="populateTodos()">Populate (All) Todos</button>
@@ -17,19 +17,14 @@
       <form>
         <label for="userIDNum">Input A User ID# (1-10):</label>
         <input id="userIDNum" name="userIDNum" type="number" min="1" max="10" />
-        <br />
-        <input type="radio" id="completed" name="status" />
-        <label for="completed">Completed</label>
-        <input type="radio" id="notCompleted" name="status" />
-        <label for="notCompleted">Not Completed</label>
-        <br />
-        <input type="submit" value="Submit" id="submit" />
       </form>
       <br />
-      <button onclick="populateUserIDTodos()">Populate UserID Todos</button>
+      <button onclick="populateUserIDTodos()">
+        Populate UserID Todos (All)
+      </button>
       <button onclick="resetTodos()">Reset Todos</button>
-      <button onclick="filterCompleteTodos()">
-        Filter Complete/Uncompleted Todos
+      <button onclick="filterTodos()">
+        Filter Todos (Complete | Uncompleted)
       </button>
       <h4>To-Do List:</h4>
     </div>
@@ -37,10 +32,10 @@
       <!-- LIs will go here -->
     </ol>
     <div class="container">
-      <ol id="completedToDo">
+      <ol id="ToDoTrue">
         <!-- Completed LIs will go here -->
       </ol>
-      <ol id="uncompletedToDo">
+      <ol id="ToDoFalse">
         <!-- Uncompleted LIs will go here -->
       </ol>
     </div>
