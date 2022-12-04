@@ -9,14 +9,36 @@
   </head>
   <body>
     <h1>JSON API Dummy To-Do List</h1>
-    <div>
+    <div class="labels">
       <button onclick="fetchTodos()">Fetch Todos</button>
       <button onclick="logTodos()">Log Todos</button>
-      <button onclick="populateTodos()">Populate Todos</button>
+      <button onclick="populateTodos()">Populate (All) Todos</button>
+      <h2>JSON Filtering:</h2>
+      <form>
+        <label for="userIDNum">Input A User ID# (1-10):</label>
+        <input id="userIDNum" name="userIDNum" type="number" min="1" max="10" />
+      </form>
+      <br />
+      <button onclick="populateUserIDTodos()">
+        Populate UserID Todos (All)
+      </button>
+      <button onclick="resetTodos()">Reset Todos</button>
+      <button onclick="filterTodos()">
+        Filter Todos (Complete | Uncompleted)
+      </button>
+      <h4>To-Do List:</h4>
     </div>
     <ol id="todo-list">
       <!-- LIs will go here -->
     </ol>
+    <div class="container">
+      <ol id="ToDoTrue">
+        <!-- Completed LIs will go here -->
+      </ol>
+      <ol id="ToDoFalse">
+        <!-- Uncompleted LIs will go here -->
+      </ol>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

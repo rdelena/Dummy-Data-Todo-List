@@ -1,7 +1,7 @@
 h1 {
   text-align: center;
 }
-div {
+.labels {
   text-align: center;
 }
 button {
@@ -16,4 +16,15 @@ button {
   background: #1de9b6;
   line-height: 1.15;
   font-size: 16px;
+}
+.container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+}
+#ToDoTrue {
+  color: green;
+}
+#ToDoFalse {
+  color: red;
 }
